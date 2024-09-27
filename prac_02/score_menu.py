@@ -16,25 +16,35 @@ def main():
     choice = input(">>> ").upper()
     while choice != 'Q':
         if choice == 'G':
-            pass
+            score = get_valid_score()
         elif choice == 'P':
-            pass
+            print(determine_grade(score))
         elif choice == 'S':
-            pass
+            print("*" * score)
         else:
-            pass
+            print("Invalid choice")
         print(MENU)
         choice = input(">>> ").upper()
 
 
 def determine_grade(score):
     """Determine the grade based on the score."""
-    pass
+    if score < 0 or score > 100:
+        return "Invalid score"
+    if score < 50:
+        return "Bad"
+    if score < 90:
+        return "Passable"
+    return "Excellent"
 
 
 def get_valid_score():
     """Get a score between 0 and 100."""
-    pass
+    score = int(input("Enter your score: "))
+    while score < 0 or score > 100:
+        print("Score must be between 0 and 100")
+        score = int(input("Enter your score: "))
+    return score
 
 
 main()
